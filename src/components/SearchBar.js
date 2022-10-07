@@ -52,6 +52,8 @@ function SearchBar() {
   return (
     <div>
       <input
+        className="form-control"
+        aria-label="Search"
         type="text"
         name="searchBar"
         data-testid="search-input"

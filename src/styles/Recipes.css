@@ -1,0 +1,65 @@
+.remove-link-color {
+  color: black;
+  text-decoration: none;
+
+  /* color: red; */
+}
+
+.glassmorphism {
+  backdrop-filter: blur(10px);
+  background: rgba(0, 0, 0, 0.034);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 10px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+.adjust-thumb {
+  margin-bottom: 5px;
+  max-width: 150px;
+}
+
+.meal-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.drink-buttons {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.recipe-detail-thumbnail {
+  margin-left: 8px;
+  max-width: 340px;
+}
+
+.adjust-menu-infos h3, span {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  text-shadow: 3px 2px black;
+}
+
+.adjust-menu-infos p {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  text-shadow: 2px 1px black;
+}
+
+/* Botões do menu de Drinks */
+.btn-1 {
+  flex-grow: 1;
+}
+
+.btn-2 {
+  flex-grow: 2;
+}
+
+.btn-3 {
+  flex-grow: 2;
+}
+
+.btn-4 {
+  flex-grow: 4;
+}

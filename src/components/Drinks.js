@@ -3,6 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
 import AppReceitasContext from '../context/AppReceitasContext';
+import '../styles/Recipes.css';
 
 function Drinks() {
   const history = useHistory();
@@ -32,53 +33,82 @@ function Drinks() {
 
   const handleFilterCategory = ({ target }) => {
     if (target.value === toFilterDrinks) return setToFilterDrinks('');
+
     setToFilterDrinks(target.value);
   };
 
   return (
-    <div>
+    <>
       <Header />
-      { drinksFilterButtons && drinksFilterButtons
-        .filter((drink, index) => index <= Number('4'))
-        .map(({ strCategory }, index) => (
-          <button
-            onClick={ handleFilterCategory }
-            value={ strCategory }
-            data-testid={ `${strCategory}-category-filter` }
-            key={ index }
-            type="button"
-          >
-            { strCategory }
-
-          </button>
-        )) }
-      <button
-        onClick={ () => setToFilterDrinks('') }
-        data-testid="All-category-filter"
-        type="button"
-      >
-        All
-
-      </button>
-      { drinksToFilter && drinksToFilter
-        .filter((drink, index) => index <= Number('11'))
-        .map((drink, index) => (
-          <Link to={ `/drinks/${drink.idDrink}` } key={ index }>
-            <div
-              data-testid={ `${index}-recipe-card` }
-              key={ drink.idDrink }
+      { /* Botões */ }
+      <main className="drinks-page">
+        <div className="container">
+          <div className="drink-buttons">
+            { drinksFilterButtons && drinksFilterButtons
+              .filter((drinks, index) => index <= Number('4'))
+              .map(({ strCategory }, index) => (
+                <button
+                  className="btn btn-dark btn-sm mt-1"
+                  style={ { backgroundColor: '#421d1d' } }
+                  onClick={ handleFilterCategory }
+                  value={ strCategory }
+                  data-testid={ `${strCategory}-category-filter` }
+                  id={ `btn-${index}` }
+                  key={ index }
+                  type="button"
+                >
+                  { strCategory }
+                </button>
+              )) }
+          </div>
+          <div className="d-grid gap-2">
+            <button
+              className="btn btn-dark mt-1"
+              style={ { backgroundColor: '#421d1d' } }
+              onClick={ () => setToFilterDrinks('') }
+              data-testid="All-category-filter"
+              type="button"
             >
-              <img
-                data-testid={ `${index}-card-img` }
-                src={ drink.strDrinkThumb }
-                alt={ drink.strDrink }
-              />
-              <span data-testid={ `${index}-card-name` }>{ drink.strDrink }</span>
-            </div>
-          </Link>
-        ))}
+              All
+            </button>
+          </div>
+        </div>
+        { /* Comidas */ }
+        <div className="container mt-3">
+          <div className="row justify-content-center">
+            { drinksToFilter && drinksToFilter
+              .filter((meal, index) => index <= Number('11'))
+              .map((meal, index) => (
+                <Link
+                  to={ `/drinks/${meal.idDrink}` }
+                  className="col-6 p-2 my-1 remove-link-color"
+                  data-testid={ `${index}-recipe-card` }
+                  key={ index }
+                >
+                  <div
+                    className="glassmorphism text-center"
+                  >
+                    <p
+                      data-testid={ `${index}-card-name` }
+                      className="my-2 text-light"
+                    >
+                      { meal.strDrink }
+                    </p>
+
+                    <img
+                      data-testid={ `${index}-card-img` }
+                      src={ meal.strDrinkThumb }
+                      alt={ meal.strDrink }
+                      className="img-fluid rounded adjust-thumb"
+                    />
+                  </div>
+                </Link>
+              ))}
+          </div>
+        </div>
+      </main>
       <Footer />
-    </div>
+    </>
   );
 }
 

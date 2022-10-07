@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import shareIcon from '../images/shareIcon.svg';
+import '../styles/index.css';
 
 export default function DoneRecipesCard(props) {
   const { image, category, recipeName, nationality, id,
@@ -24,6 +25,7 @@ export default function DoneRecipesCard(props) {
     >
       <Link to={ `/${mealOrDrink}s/${id}` }>
         <img
+          className="recipe-image"
           data-testid={ `${index}-horizontal-image` }
           src={ image }
           alt={ recipeName }

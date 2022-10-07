@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import Header from './Header';
 import Favorite from '../images/blackHeartIcon.svg';
 import shareIcon from '../images/shareIcon.svg';
+import '../styles/index.css';
 
 function FavoriteRecipes() {
   const [favoriteFoods, setFavoriteFood] = useState();
@@ -90,6 +91,7 @@ function FavoriteRecipes() {
               <h2 data-testid={ `${i}-horizontal-top-text` }>{ alcoholicOrNot }</h2>
               <Link to={ `/${type}s/${id}` }>
                 <img
+                  className="recipe-image"
                   data-testid={ `${i}-horizontal-image` }
                   src={ image }
                   alt={ name }
